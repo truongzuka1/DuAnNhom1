@@ -1,0 +1,23 @@
+﻿<!-- Views/Voucher/Index.cshtml -->
+@model List<Voucher>
+<h2>Danh sách Voucher</h2>
+<table>
+    <tr>
+        <th>Mã Voucher</th>
+        <th>Giảm giá</th>
+        <th>Áp dụng</th>
+    </tr>
+    @foreach (var voucher in Model)
+    {
+        <tr>
+            <td>@voucher.Code</td>
+            <td>@voucher.DiscountPercentage</td>
+            <td>
+                <form method="post" action="/Voucher/Apply">
+                    <input type="hidden" name="voucherCode" value="@voucher.Code" />
+                    <button type="submit">Áp dụng</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

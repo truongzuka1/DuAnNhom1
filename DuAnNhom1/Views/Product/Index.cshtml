@@ -1,0 +1,15 @@
+﻿<!-- Views/Product/Index.cshtml -->
+@model List<Product>
+<h2>Danh sách sản phẩm</h2>
+@foreach (var product in Model)
+{
+    <div>
+        <h3>@product.Name</h3>
+        <p>Giá: @product.Price</p>
+        <a href="/Product/Details?id=@product.Id">Xem chi tiết</a>
+        <form method="post" action="/Cart/AddToCart">
+            <input type="hidden" name="productId" value="@product.Id" />
+            <button type="submit">Thêm vào giỏ hàng</button>
+        </form>
+    </div>
+}

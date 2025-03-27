@@ -1,0 +1,37 @@
+﻿<!-- Views/Cart/Index.cshtml -->
+@model List<CartItem>
+<h2>Giỏ hàng của bạn</h2>
+<table>
+    <tr>
+        <th>Sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Hành động</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>
+                <form method="post" action="/Cart/Update">
+                    <input type="hidden" name="productId" value="@item.ProductId" />
+                    <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                    <button type="submit">Cập nhật</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/Cart/Remove">
+                    <input type="hidden" name="productId" value="@item.ProductId" />
+                    <button type="submit">Xóa</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Checkout">Thanh toán</a>
+
+
+
+
+
+<!-- Views/Order/Details.cshtml -->
+
